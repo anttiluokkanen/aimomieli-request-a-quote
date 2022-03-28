@@ -2,12 +2,12 @@
 /**
  * Plugin Name:     Aimomieli Request A Quote
  * Plugin URI:      https://aimomieli.fi
- * Description:     Request a quote sticky element in page bottom. Add shortcode [request_a_quote id="{POST ID}" title="{POST TITLE}"] and replace {POST ID} and {POST TITLE} with actual values. You can leave id empty but title is mandatory field.
+ * Description:     Request a quote sticky element in page bottom. Add shortcode [request_a_quote] to your post.
  * Author:          Aimomieli
  * Author URI:      https://aimomieli.fi
  * Text Domain:     aimomieli-request-a-quote
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.1.1
  *
  * @package         Request_A_Quote
  */
@@ -17,7 +17,7 @@ namespace AimomieliRequestAQuote;
 defined( 'ABSPATH' ) || exit;
 
 if ( !defined( 'REQUEST_A_QUOTE_VERSION' ) ) {
-	define( 'REQUEST_A_QUOTE_VERSION', date("YmdHis") );
+	define( 'REQUEST_A_QUOTE_VERSION', '0.1.1' );
 }
 
 if ( !defined( 'REQUEST_A_QUOTE_SLUG' ) ) {
@@ -44,12 +44,13 @@ function plugin_assets() {
 
 // Add Shortcode
 function request_a_quote_shortcode( $atts ) {
+	global $post;
 
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'id' => '',
-			'title' => '',
+			'id' => $post->ID,
+			'title' => get_the_title( $post ),
 		),
 		$atts,
 		'request_a_quote'
@@ -78,7 +79,7 @@ function display_form( $atts ) {
 	}
 
 	$heading = '<h4>' . $heading . '</h4>';
-	$content = '<p>' .$text . ' ' . $title . '?</p>';
+	$content = '<p>' .$text . ' ' . $title . '.</p>';
 	$hiddencontent = '<section id="request-a-quote-hidden-data">';
 	$hiddencontent .= '<input id="hidden-request-a-quote-id" type="hidden" name="request_a_quote_id" value="' . esc_attr( $id ). '">';
 	$hiddencontent .= '<input id="hidden-request-a-quote-title" type="hidden" name="request_a_quote_title" value="' . esc_attr( $title ) . '">';

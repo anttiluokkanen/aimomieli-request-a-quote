@@ -3,15 +3,17 @@
 	position: fixed;
 	bottom: 16px;
 	right: 16px;
-	padding: 30px;
+	padding: 30px 20px;
 	width: 250px;
 	background: #fff;
 	border: 3px solid #ddd;
 	text-align: left;
+	z-index: 10;
 }
 #request-a-quote.open {
 	width: 450px;
-	max-height: 85vh;
+	min-height: 320px;
+	max-height: 70vh;
 	overflow: scroll;
 }
 #request-a-quote-form {
@@ -27,22 +29,48 @@
 	top: 0;
 }
 #request-a-quote-cta {
-  	background: #ddd;
+  	background: #fff;
 }
 #request-a-quote-hide-form-button,
-#request-a-quote-cta-button {
+#request-a-quote-cta-button,
+#request-a-quote-submit-button {
 	background: #000;
 	color: #fff;
 	border: 0;
-	padding: 16px;
+	padding: 17px;
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: 0.3s;
+	margin-bottom: 1px;
 }
 #request-a-quote-hide-form-button:focus,
 #request-a-quote-hide-form-button:hover,
 #request-a-quote-cta-button:focus,
-#request-a-quote-cta-button:hover {
+#request-a-quote-cta-button:hover,
+#request-a-quote-submit-button:focus,
+#request-a-quote-submit-button:hover {
 	background: #fe0000;
 	cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+	#request-a-quote {
+		font-size: 0.8rem;
+		width: 80%;
+		max-width: 225px;
+		bottom: 0;
+		right: 0;
+		padding: 10px;
+		border: 1px solid #ddd;
+	}
+	#request-a-quote.open {
+		width: 80%;
+		max-width: 475px;
+	}
+
+	#request-a-quote-hide-form-button,
+	#request-a-quote-cta-button,
+	#request-a-quote-submit-button {
+		padding: 8px;
+	}
 }

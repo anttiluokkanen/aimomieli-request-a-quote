@@ -12,10 +12,12 @@ Currently supports GravityForms (not tested) and Contacf Form 7 (tested).
 
 1. Upload `aimomieli-request-a-quote` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place `[request_a_quote id="{POST ID}" title="{POST TITLE}"]` shortcode in your post editor.
-4. Replace {POST ID} (not mandatory) and {POST TITLE} in your shortcode.
-5. Add following hidden fields `#hidden-request-a-quote-id` and `#hidden-request-a-quote-title` into your form. If you need to use some other named fields, go and edit `assets/js/plugin.js`
-6. Set form id and texts with the following hooks.
+3. Add following hidden fields `#hidden-request-a-quote-id` and `#hidden-request-a-quote-title` into your form. If you need to use some other named fields, go and edit `assets/js/plugin.js`
+4. Set form id and texts with the following hooks.
+
+## Usage
+1. Place `[request_a_quote]` shortcode in your post.
+2. Additionally pass id and/or title `[request_a_quote id="{POST ID}" title="{POST TITLE}"]` if you need to display something other than post data.
 
 ## Hooks
 
